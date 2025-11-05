@@ -10,7 +10,7 @@ y_screen = 720
 screen = pygame.display.set_mode((x_screen, y_screen))
 # Background with local path in asset file
 bg_image = pygame.image.load('Assets/Background/MainBackgroundSmartCents.png')
-bg_image = pygame.transform.scale(bg_image, (1280, 720))
+bg_image = pygame.transform.scale(bg_image, (x_screen, y_screen))
 
 # Text
 pygame.font.init()
