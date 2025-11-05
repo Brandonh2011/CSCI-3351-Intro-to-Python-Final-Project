@@ -5,9 +5,18 @@ import pygame
 pygame.display.set_caption('SmartCents')
 pygame.init()
 # Screen Size
-screen = pygame.display.set_mode((1280, 720))
+x_screen = 1280
+y_screen = 720
+screen = pygame.display.set_mode((x_screen, y_screen))
 bg_image = pygame.image.load('Assets/Background/MainBackgroundSmartCents.png')
 bg_image = pygame.transform.scale(bg_image, (1280, 720))
+
+# Text
+pygame.font.init()
+my_font = pygame.font.SysFont('Comic Sans MS', 30)
+
+text_surface = my_font.render('SmartCents!', False, (0, 0, 0))
+
 clock = pygame.time.Clock()
 running = True
 dt = 0
@@ -20,6 +29,8 @@ while running:
             running = False
 
     screen.blit(bg_image, (x, 0))
+
+    screen.blit(text_surface, (x_screen/3, 0))
 
     # flip() the display to put your work on screen
     pygame.display.flip()
