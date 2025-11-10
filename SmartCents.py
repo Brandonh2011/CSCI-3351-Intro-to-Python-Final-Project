@@ -16,9 +16,9 @@ bg_image = pygame.transform.scale(bg_image, (x_screen, y_screen))
 pygame.font.init()
 my_font = pygame.font.SysFont('Comic Sans MS', 30)
 
-# Title text, can use as a outline
+# Title text, can use as an outline
 text_surface = my_font.render('SmartCents!', False, (0, 0, 0))
-
+text_rect = text_surface.get_rect(center=(x_screen/2, y_screen/20))
 #idk
 clock = pygame.time.Clock()
 running = True
@@ -35,13 +35,13 @@ while running:
     #Background image
     screen.blit(bg_image, (x, 0))
     # Title Text
-    screen.blit(text_surface, (x_screen/3, 0))
+    screen.blit(text_surface, text_rect)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
 
     # limits FPS to 60
-    # dt is delta time in seconds since last frame, used for framerate-
+    # dt is delta time in seconds since last frame, used for frame rate
     # independent physics.
     dt = clock.tick(60) / 1000
 
