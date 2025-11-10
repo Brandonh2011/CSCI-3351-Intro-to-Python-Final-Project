@@ -1,5 +1,6 @@
 # Example file showing a circle moving on screen
 import pygame
+from Button import Button
 
 # pygame setup
 pygame.display.set_caption('SmartCents')
@@ -22,17 +23,34 @@ title_contain = title_text.get_rect(center=(x_screen/2, y_screen/20))
 
 footer_text = my_font.render('This is a footer', False, (0, 0, 0))
 footer_contain = footer_text.get_rect(center=(x_screen/2, y_screen/1.1))
+
+# Icons
+# Add bank Icon here
+# Add Upgrade Icon here
+# Add Event_Log Icon here
+# Addd Settings Icon here
+
 #idk
 clock = pygame.time.Clock()
 running = True
 dt = 0
 x = 0
 
+# test button
+button_width = x_screen / 4
+button_height = y_screen / 6
+button_x = 0
+button_y = y_screen - button_height
+B1 = Button(button_x,button_y,button_width,button_height,"test",(255,0,0),(0,255,0),my_font,None)
+
 # Put things to be displayed below
 while running:
     # poll for events
     # pygame.QUIT event means the user clicked X to close your window
+      
     for event in pygame.event.get():
+        # handle test button click (will crash)
+        B1.handle_event(event)
         if event.type == pygame.QUIT:
             running = False
     #Background image
@@ -40,6 +58,10 @@ while running:
     # Title Text
     screen.blit(title_text, title_contain)
     screen.blit(footer_text, footer_contain)
+
+    # draw test button
+    B1.draw(screen)
+
     # flip() the display to put your work on screen
     pygame.display.flip()
 
