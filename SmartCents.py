@@ -17,8 +17,11 @@ pygame.font.init()
 my_font = pygame.font.SysFont('Comic Sans MS', 30)
 
 # Title text, can use as an outline
-text_surface = my_font.render('SmartCents!', False, (0, 0, 0))
-text_rect = text_surface.get_rect(center=(x_screen/2, y_screen/20))
+title_text = my_font.render('SmartCents!', False, (0, 0, 0))
+title_contain = title_text.get_rect(center=(x_screen/2, y_screen/20))
+
+footer_text = my_font.render('This is a footer', False, (0, 0, 0))
+footer_contain = footer_text.get_rect(center=(x_screen/2, y_screen/1.1))
 #idk
 clock = pygame.time.Clock()
 running = True
@@ -35,8 +38,8 @@ while running:
     #Background image
     screen.blit(bg_image, (x, 0))
     # Title Text
-    screen.blit(text_surface, text_rect)
-
+    screen.blit(title_text, title_contain)
+    screen.blit(footer_text, footer_contain)
     # flip() the display to put your work on screen
     pygame.display.flip()
 
