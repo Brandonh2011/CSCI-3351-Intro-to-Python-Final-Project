@@ -26,6 +26,13 @@ title_contain = title_text.get_rect(center=(x_screen/2, y_screen/20))
 
 footer_text = my_font.render('This is a footer', False, (0, 0, 0))
 footer_contain = footer_text.get_rect(center=(x_screen/2, y_screen/1.1))
+
+# Icons
+# Add bank Icon here
+# Add Upgrade Icon here
+# Add Event_Log Icon here
+# Addd Settings Icon here
+
 #idk
 clock = pygame.time.Clock()
 running = True
