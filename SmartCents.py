@@ -2,6 +2,9 @@
 import pygame
 from Button import Button
 
+RED = (255,0,0)
+GREEN = (0,255,0)
+
 # pygame setup
 pygame.display.set_caption('SmartCents')
 pygame.init()
@@ -34,7 +37,10 @@ button_width = x_screen / 4
 button_height = y_screen / 6
 button_x = 0
 button_y = y_screen - button_height
-B1 = Button(button_x,button_y,button_width,button_height,"test",(255,0,0),(0,255,0),my_font,None)
+B1 = Button(button_x,button_y,button_width,button_height,"test",RED, GREEN, my_font,None)
+B2 = Button(button_width, button_y, button_width, button_height, "test2", RED, GREEN, my_font, None)
+B3 = Button(button_width*2, button_y, button_width, button_height, "test3", RED, GREEN, my_font, None)
+B4 = Button(button_width*3, button_y, button_width, button_height, "test4", RED, GREEN, my_font, None)
 
 # Put things to be displayed below
 while running:
@@ -44,6 +50,9 @@ while running:
     for event in pygame.event.get():
         # handle test button click (will crash)
         B1.handle_event(event)
+        B2.handle_event(event)
+        B3.handle_event(event)
+        B4.handle_event(event)
         if event.type == pygame.QUIT:
             running = False
     #Background image
@@ -54,6 +63,9 @@ while running:
 
     # draw test button
     B1.draw(screen)
+    B2.draw(screen)
+    B3.draw(screen)
+    B4.draw(screen)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
