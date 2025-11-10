@@ -7,11 +7,11 @@ class Event:
         self.effect = effect            # Function that applies the event’s impact
 
     def apply(self, player):
-        """Execute the event’s effect on the given player object."""
+        # Execute the event’s effect on the given player object.
         return self.effect(player)
 
 
-# ---- Individual Event Effects ----
+#            Individual Event Effects
 
 def medical_bill_effect(player):
     # Random medical expense that reduces player’s money.
@@ -20,12 +20,12 @@ def medical_bill_effect(player):
     return f"You were hit with a medical bill of ${cost}."
 
 
-def job_loss_effect(player):
-    # Simulates a bad year with income loss.
+def investment_loss_effect(player):
+    # Simulates a bad year with investment losses.
     loss_amount = random.randint(2000, 5000)
     player.money -= loss_amount
     player.happiness -= 10            # Reduce happiness due to stress
-    return f"You lost income this year and took a hit of ${loss_amount}."
+    return f"You lost money on investments this year and took a hit of ${loss_amount}."
 
 
 def tax_increase_effect(player):
@@ -49,7 +49,7 @@ def business_bonus_effect(player):
     return f"Your business had a strong year! Bonus income: ${bonus}."
 
 
-# ---- Event Pool ----
+#                   Event Pool 
 # Dictionary mapping event keys to Event objects
 EVENT_POOL = {
     "medical_bill": Event(
@@ -60,7 +60,7 @@ EVENT_POOL = {
     "job_loss": Event(
         "Job Loss",
         "You struggled with income this year.",
-        job_loss_effect
+        investment_loss_effect
     ),
     "tax_increase": Event(
         "Tax Increase",
@@ -74,17 +74,17 @@ EVENT_POOL = {
     ),
     "business_bonus": Event(
         "Business Bonus",
-        "Your lemonade stand performed exceptionally well.",
+        "Your farm has performed exceptionally well.",
         business_bonus_effect
     )
 }
 
 
-# ---- Event Weights ----
-# Higher weights mean higher chance of that event happening
-EVENT_WEIGHTS = {
+#           Event Chances of happening
+# Higher percentages mean higher chance of that event happening
+EVENT_PERCENTAGES = {
     "medical_bill": 0.15,
-    "job_loss": 0.15,
+    "investment_loss": 0.15,
     "tax_increase": 0.20,
     "stock_boom": 0.25,
     "business_bonus": 0.25
@@ -92,21 +92,21 @@ EVENT_WEIGHTS = {
 
 
 def get_random_event():
-    """
-    Randomly select one event from EVENT_POOL based on EVENT_WEIGHTS.
-    Returns the selected Event object.
-    """
-    names = list(EVENT_WEIGHTS.keys())       # Event identifiers
-    weights = list(EVENT_WEIGHTS.values())   # Corresponding probabilities
-    selected = random.choices(names, weights=weights, k=1)[0]  # Pick one key
+    
+   # Randomly select one event from EVENT_POOL based on EVENT_PERCENTAGES.
+    # Returns the selected Event object.
+    
+    names = list(EVENT_PERCENTAGES.keys())       # Event identifiers
+    percentages = list(EVENT_PERCENTAGES.values())   # Corresponding probabilities
+    selected = random.choices(names, weights=percentages, k=1)[0]  # Pick one key
     return EVENT_POOL[selected]              # Return the matching Event object
 
 
 def trigger_event(player):
-    """
-    Selects and applies a random event to the player.
-    Returns a dictionary summarizing the event and its result text.
-    """
+    
+    # Selects and applies a random event to the player.
+    # Returns a dictionary summarizing the event and its result text.
+
     event = get_random_event()               # Pick a random event
     result_text = event.apply(player)        # Apply the event’s effect
     return {
