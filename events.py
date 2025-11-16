@@ -16,36 +16,36 @@ class Event:
 def medical_bill_effect(player):
     # Random medical expense that reduces player’s money.
     cost = random.randint(800, 2000)  # Generate a random cost
-    player.money -= cost              # Subtract from player’s funds
+    player.minusMoney(cost)           # Subtract from player’s funds
     return f"You were hit with a medical bill of ${cost}."
 
 
 def investment_loss_effect(player):
     # Simulates a bad year with investment losses.
     loss_amount = random.randint(2000, 5000)
-    player.money -= loss_amount
-    player.happiness -= 10            # Reduce happiness due to stress
+    player.minusMoney(loss_amount)         
+    player.minusHappiness(10) # Reduce happiness due to stress
     return f"You lost money on investments this year and took a hit of ${loss_amount}."
 
 
 def tax_increase_effect(player):
     # Applies a random extra tax cost.
     tax_cost = random.randint(300, 900)
-    player.money -= tax_cost
+    player.minusMoney(tax_cost)
     return f"The government increased taxes. You paid an extra ${tax_cost}."
 
 
 def stock_boom_effect(player):
     # The player gains extra money due to a stock market boom.
     gain = random.randint(1000, 4000)
-    player.money += gain
+    player.addMoney(gain)
     return f"The stock market boomed! You gained ${gain}."
 
 
 def business_bonus_effect(player):
     # Player’s business performs well, earning extra profit.
     bonus = random.randint(500, 2500)
-    player.money += bonus
+    player.addMoney(bonus)
     return f"Your business had a strong year! Bonus income: ${bonus}."
 
 
