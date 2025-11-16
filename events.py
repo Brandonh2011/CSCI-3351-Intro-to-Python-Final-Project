@@ -114,3 +114,6 @@ def trigger_event(player):
         "description": event.description,
         "result": result_text
     }
+
+if __name__ == "__main__":
+    print("\nSorry, but events.py can only be imported!")

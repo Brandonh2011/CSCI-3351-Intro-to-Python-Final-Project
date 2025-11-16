@@ -1,7 +1,7 @@
 class Bank:
     def __init__(self):
         self.__savings = 0
-        self.__interestRate = .05 #5% interest on savings
+        self.__interestRate = .02 #5% interest on savings
         
     def deposit(self, amount, player):
         if amount <= 0:
@@ -33,3 +33,5 @@ class Bank:
     def getSavings(self):
         return self.__savings
     
+if __name__ == "__main__":
+    print("\nSorry, but bank.py can only be imported!")

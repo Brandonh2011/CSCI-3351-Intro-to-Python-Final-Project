@@ -1,3 +1,6 @@
+
+from bank import Bank
+
 class Player:
     def __init__(self, name):
         self.__name = name #potential player name input
@@ -5,11 +8,12 @@ class Player:
         self.__happiness = 100 #starts fully happy
         self.__debt = 0 #
         self.__current_year = 0 #turn
+        self.bank = Bank()
 
     def debtInterest(self):
         #punishment if in debt
         if self.__money < 0:
-            self.__money * 1.05 #5% interest
+            self.__money *= 1.05 #5% interest
             
     #Getters
     def getName(self):
@@ -30,7 +34,7 @@ class Player:
     #Checkers
     def canAfford(self, cost):
         #Checks if player has enough money
-        return self.__money > cost
+        return self.__money >= cost
     
     def isBankrupt(self):
         #if player gets a game over
@@ -42,7 +46,7 @@ class Player:
         self.debtInterest()
         
     def minusMoney(self, amount):
-        self.__money -+ amount
+        self.__money -= amount
         self.debtInterest()
         
     def addHappiness(self, amount):
@@ -55,4 +59,5 @@ class Player:
         self.__current_year += 1
     
     
-   
+if __name__ == "__main__":
+    print("\nSorry, but player.py can only be imported!")
