@@ -2,7 +2,7 @@ from player import Player
 
 class TurnSystem:
     def __init__(self):
-        self.player = Player()
+        self.player = Player("Player1")
     
     def oneTurn(self):
         #applies interests to savings
@@ -38,7 +38,7 @@ class TurnSystem:
         
          #moving money to savings
     def deposit_to_savings(self, amount):
-            return self.player.bank(amount, self.player)
+            return self.player.bank.deposit(amount, self.player)
         
         #moving money to checking
     def withdraw_from_savings(self, amount):
