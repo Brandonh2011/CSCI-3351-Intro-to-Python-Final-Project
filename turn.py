@@ -7,7 +7,7 @@ class TurnSystem:
         self.upgrades = Upgrade()
     
     def oneTurn(self):
-        self.upgrades.setFertilizerActive(self.upgrades.isFerterlizerQueued)
+        self.upgrades.setFertilizerActive(self.upgrades.isFerterlizerQueued())
         #Resets fertilizer
         self.upgrades.setFertilizerQueue(False)
         

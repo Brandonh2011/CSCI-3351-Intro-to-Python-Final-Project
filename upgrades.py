@@ -4,7 +4,7 @@ class Upgrade:
             #Tier 1 Upgrades
             "land_increase_1":{
                 "name": "Land Expansion",
-                "cost": 500,
+                "cost": 300,
                 "description": "Increase your land holdings to generate more income.",
                 "tier": 1,
                 "max_level": 1,
@@ -12,7 +12,7 @@ class Upgrade:
             },
             "hand_tools":{
                 "name": "Hand Tools",
-                "cost": 300,
+                "cost": 200,
                 "description": "Basic tools to improve efficiency.",
                 "tier": 1,
                 "max_level": 3,
@@ -20,7 +20,7 @@ class Upgrade:
             },
             "Employee":{
                 "name": "Hire Employee",
-                "cost": 800,
+                "cost": 400,
                 "description": "Hire an employee to help with your business.",
                 "tier": 1,
                 "max_level": 2,
@@ -29,7 +29,7 @@ class Upgrade:
             #Tier 2 Upgrades
             "land_increase_2":{
                 "name": "Land Expansion",
-                "cost": 1500,
+                "cost": 800,
                 "description": "Further increase your land to boost income.",
                 "tier": 2,
                 "max_level": 1,
@@ -46,7 +46,7 @@ class Upgrade:
             
             "Machinery":{
                 "name": "Buy Machinery",
-                "cost": 2000,
+                "cost": 1000,
                 "description": "Invest in machinery to significantly boost productivity.",
                 "tier": 2,
                 "max_level": 2,
@@ -55,7 +55,7 @@ class Upgrade:
             
             "farmers_market_stall":{
                 "name": "Farmers Market Stall",
-                "cost": 1200,
+                "cost": 600,
                 "description": "Set up a stall at the farmers market to increase sales.",
                 "tier": 2,
                 "max_level": 1,
@@ -63,14 +63,14 @@ class Upgrade:
             },
             "fertilizerConsumable":{
                 "name": "Fertilizer",
-                "cost": 400,
+                "cost": 150,
                 "description": "Boost crop yeild next turn by 50%",
                 "tier": 2,
             },
             #Tier 3 Upgrades
             "chicken":{
                 "name": "Chicken Coop",
-                "cost": 3000,
+                "cost": 2000,
                 "description": "Raise chickens to diversify your farm income.",
                 "tier": 3,
                 "max_level": 1,
@@ -141,7 +141,7 @@ class Upgrade:
         tools_mult = 1.0
         if self.upgrades["hand_tools"]["current_level"] > 0:
             #10 percent increase per level
-            tools_mult *= (1.1 ** self.upgrades["hands_tools"]["current_level"]) 
+            tools_mult *= (1.1 ** self.upgrades["hand_tools"]["current_level"]) 
         
         #Machinery Tool Multiplier
         machinery_mult = 1.0
@@ -151,6 +151,7 @@ class Upgrade:
         #Worker multiplier
         worker_mult = 1.0 + (self.__num_workers * 0.3)
         
+        fertilizer_boost = 0
         #Fertilizer boost if active
         if self.__fertliizer_active:
             fertilizer_boost = 1.5
@@ -167,7 +168,7 @@ class Upgrade:
             potato_income = 250 
             
         #market multiplier
-        market_mult = 0
+        market_mult = 1.0
         
         if self.upgrades["farmers_market_stall"]["current_level"] > 0:
             market_mult *= 1.5
