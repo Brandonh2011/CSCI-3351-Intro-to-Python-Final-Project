@@ -31,13 +31,13 @@ def tax_increase_effect(player):
     return f"The government increased taxes. You paid an extra ${tax_cost}."
 
 def stock_boom_effect(player):
-    gain = random.randint(400, 1200)  # Was 1000-4000
+    gain = random.randint(400, 1200)  
     player.addMoney(gain)
     player.addHappiness(5)
     return f"The stock market boomed! You gained ${gain}."
 
 def business_bonus_effect(player):
-    bonus = random.randint(300, 1000)  # Was 500-2500
+    bonus = random.randint(300, 1000)  
     player.addMoney(bonus)
     player.addHappiness(5)
     return f"Your business had a strong year! Bonus income: ${bonus}."

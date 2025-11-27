@@ -186,3 +186,6 @@ class Upgrade:
         self.__fertilizer_active = active
     def setFertilizerQueue(self, queue):
         self.__fertilizer_queue = queue
+        
+if __name__ == "__main__":
+    print("\nSorry, but upgrades.py can only be imported!")
