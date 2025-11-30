@@ -1,16 +1,22 @@
 from player import Player
+from upgrades import Upgrade
 
 class TurnSystem:
     def __init__(self):
         self.player = Player("Player1")
+        self.upgrades = Upgrade()
     
     def oneTurn(self):
+        self.upgrades.setFertilizerActive(self.upgrades.isFerterlizerQueued())
+        #Resets fertilizer
+        self.upgrades.setFertilizerQueue(False)
+        
         #applies interests to savings
         interested_earned = self.player.bank.applyInterest()
         
         #200 per turn before upgrades
-        base_income = 200
-        self.player.addMoney(base_income)
+        income = self.upgrades.calculateIncome()
+        self.player.addMoney(income)
         
         #Gameover results
         if self.player.isBankrupt():
@@ -28,7 +34,7 @@ class TurnSystem:
         #turn summary
         return {
             "year" : self.player.getYear(),
-            "income" : base_income,
+            "income" : income,
             "interestEarned" : interested_earned,
             "checking" : self.player.getMoney(),
             "savings" : self.player.bank.getSavings(),

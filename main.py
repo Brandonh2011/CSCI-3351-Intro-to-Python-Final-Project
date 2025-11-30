@@ -14,7 +14,7 @@ def main():
         print(f"Starting Happiness: {game.player.getHappiness()}")
         print()
         
-        # Run 10 turns
+        # Run 6 turns
         for turn in range(1, 7):
             print(f"\n--- TURN {turn} ---")
             result = game.oneTurn()
