@@ -55,6 +55,8 @@ B2 = Button(button_width, button_y, button_width, button_height, "Upgrade", RED,
 B3 = Button(button_width*2, button_y, button_width, button_height, "Event Logs", RED, GREEN, my_font, None)
 B4 = Button(button_width*3, button_y, button_width, button_height, "Settings", RED, GREEN, my_font, None)
 
+
+
 # Put things to be displayed below
 while running:
     # poll for events
