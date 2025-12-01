@@ -61,7 +61,7 @@ dt = 0
 x = 0
 
 # Icons
-bank_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/bank.png"), (120, 120))
+bank_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Bank.png"), (120, 120))
 upgrade_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Upgrade Hovered.png"), (120, 120))
 event_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Event Log.png"), (120, 120))
 settings_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Settings gear.png"), (120, 120))
