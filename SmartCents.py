@@ -46,15 +46,25 @@ running = True
 dt = 0
 x = 0
 
+# Load icon
+bank_icon = pygame.image.load("Assets/Footer/bank.png")
+bank_icon = pygame.transform.scale(bank_icon, (120, 120))
+upgrade_icon = pygame.image.load("Assets/Footer/Upgrade Hovered.png")
+upgrade_icon = pygame.transform.scale(upgrade_icon, (120, 120))
+event_icon = pygame.image.load("Assets/Footer/Event Log.png")
+event_icon = pygame.transform.scale(event_icon, (120, 120))
+settings_icon = pygame.image.load("Assets/Footer/Settings gear.png")
+settings_icon = pygame.transform.scale(settings_icon, (120, 120))
+
 # test button
 button_width = x_screen / 4
 button_height = y_screen / 6
 button_x = 0
 button_y = y_screen - button_height
-B1 = Button(button_x,button_y,button_width,button_height,"Bank",Gray, GREEN, my_font,None)
-B2 = Button(button_width, button_y, button_width, button_height, "Upgrade", Gray, GREEN, my_font, None)
-B3 = Button(button_width*2, button_y, button_width, button_height, "Event Logs", Gray, GREEN, my_font, None)
-B4 = Button(button_width*3, button_y, button_width, button_height, "Settings", Gray, GREEN, my_font, None)
+B1 = Button(button_x,button_y,button_width,button_height,"",Gray, GREEN, my_font,None)
+B2 = Button(button_width, button_y, button_width, button_height, "", Gray, GREEN, my_font, None)
+B3 = Button(button_width*2, button_y, button_width, button_height, "", Gray, GREEN, my_font, None)
+B4 = Button(button_width*3, button_y, button_width, button_height, "", Gray, GREEN, my_font, None)
 
 
 
@@ -81,9 +91,20 @@ while running:
 
     # draw test button
     B1.draw(screen)
+    bank_rect = bank_icon.get_rect(center=B1.rect.center)
+    screen.blit(bank_icon, bank_rect)
+
     B2.draw(screen)
+    upgrade_rect = upgrade_icon.get_rect(center=B2.rect.center)
+    screen.blit(upgrade_icon, upgrade_rect)
+
     B3.draw(screen)
+    event_rect = event_icon.get_rect(center=B3.rect.center)
+    screen.blit(event_icon, event_rect)
+
     B4.draw(screen)
+    settings_rect = settings_icon.get_rect(center=B4.rect.center)
+    screen.blit(settings_icon, settings_rect)
 
     # flip() the display to put your work on screen
     pygame.display.flip()
