@@ -14,39 +14,34 @@ class Event:
 #            Individual Event Effects
 
 def medical_bill_effect(player):
-    # Random medical expense that reduces player’s money.
-    cost = random.randint(800, 2000)  # Generate a random cost
-    player.minusMoney(cost)           # Subtract from player’s funds
+    cost = random.randint(400, 1000)
+    player.minusMoney(cost)
+    player.minusHappiness(5)
     return f"You were hit with a medical bill of ${cost}."
 
-
 def investment_loss_effect(player):
-    # Simulates a bad year with investment losses.
-    loss_amount = random.randint(2000, 5000)
+    loss_amount = random.randint(800, 2000)
     player.minusMoney(loss_amount)         
-    player.minusHappiness(10) # Reduce happiness due to stress
+    player.minusHappiness(10)
     return f"You lost money on investments this year and took a hit of ${loss_amount}."
 
-
 def tax_increase_effect(player):
-    # Applies a random extra tax cost.
-    tax_cost = random.randint(300, 900)
+    tax_cost = random.randint(150, 400)
     player.minusMoney(tax_cost)
     return f"The government increased taxes. You paid an extra ${tax_cost}."
 
-
 def stock_boom_effect(player):
-    # The player gains extra money due to a stock market boom.
-    gain = random.randint(1000, 4000)
+    gain = random.randint(400, 1200)  
     player.addMoney(gain)
+    player.addHappiness(5)
     return f"The stock market boomed! You gained ${gain}."
 
-
 def business_bonus_effect(player):
-    # Player’s business performs well, earning extra profit.
-    bonus = random.randint(500, 2500)
+    bonus = random.randint(300, 1000)  
     player.addMoney(bonus)
+    player.addHappiness(5)
     return f"Your business had a strong year! Bonus income: ${bonus}."
+
 
 
 #                   Event Pool 
@@ -83,11 +78,11 @@ EVENT_POOL = {
 #           Event Chances of happening
 # Higher percentages mean higher chance of that event happening
 EVENT_PERCENTAGES = {
-    "medical_bill": 0.15,
-    "investment_loss": 0.15,
-    "tax_increase": 0.20,
-    "stock_boom": 0.25,
-    "business_bonus": 0.25
+    "medical_bill": 0.12,
+    "investment_loss": 0.10,
+    "tax_increase": 0.13,
+    "stock_boom": 0.32,
+    "business_bonus": 0.33
 }
 
 
