@@ -4,6 +4,7 @@ from Button import Button
 
 RED = (255,0,0)
 GREEN = (0,255,0)
+Gray = (128,128,128)
 
 # pygame setup
 pygame.display.set_caption('SmartCents')
@@ -50,10 +51,10 @@ button_width = x_screen / 4
 button_height = y_screen / 6
 button_x = 0
 button_y = y_screen - button_height
-B1 = Button(button_x,button_y,button_width,button_height,"Bank",RED, GREEN, my_font,None)
-B2 = Button(button_width, button_y, button_width, button_height, "Upgrade", RED, GREEN, my_font, None)
-B3 = Button(button_width*2, button_y, button_width, button_height, "Event Logs", RED, GREEN, my_font, None)
-B4 = Button(button_width*3, button_y, button_width, button_height, "Settings", RED, GREEN, my_font, None)
+B1 = Button(button_x,button_y,button_width,button_height,"Bank",Gray, GREEN, my_font,None)
+B2 = Button(button_width, button_y, button_width, button_height, "Upgrade", Gray, GREEN, my_font, None)
+B3 = Button(button_width*2, button_y, button_width, button_height, "Event Logs", Gray, GREEN, my_font, None)
+B4 = Button(button_width*3, button_y, button_width, button_height, "Settings", Gray, GREEN, my_font, None)
 
 
 
