@@ -34,26 +34,22 @@ footer_text = my_font.render('This is a footer', False, (0, 0, 0))
 footer_contain = footer_text.get_rect(center=(x_screen/2, y_screen/1.1))
 
 # POPUP SYSTEM
-show_bank_popup = False
-show_upgrade_popup = False
-show_event_log_popup = False
-show_settings_popup = False
+popups = {
+    "bank": False,
+    "upgrade": False,
+    "event_log": False,
+    "settings": False
+}
 
-def open_Bank():
-    global show_bank_popup
-    show_bank_popup = True
+def open_popup(name):
+    for key in popups:
+        popups[key] = False
+    popups[name] = True
 
-def open_Upgrade():
-    global show_upgrade_popup
-    show_upgrade_popup = True
-
-def open_Event_Log():
-    global show_event_log_popup
-    show_event_log_popup = True
-
-def open_Setting():
-    global show_settings_popup
-    show_settings_popup = True
+def open_Bank(): open_popup("bank")
+def open_Upgrade(): open_popup("upgrade")
+def open_Event_Log(): open_popup("event_log")
+def open_Setting(): open_popup("settings")
 
 clock = pygame.time.Clock()
 running = True
@@ -88,10 +84,8 @@ while running:
 
         # ESC closes all popups
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-            show_bank_popup = False
-            show_upgrade_popup = False
-            show_event_log_popup = False
-            show_settings_popup = False
+            for key in popups:
+                popups[key] = False
 
         if event.type == pygame.QUIT:
             running = False
@@ -116,10 +110,10 @@ while running:
         txt = my_font.render(title, True, (0,0,0))
         screen.blit(txt, txt.get_rect(center=popup_rect.center))
 
-    if show_bank_popup:       draw_popup("BANK WINDOW")
-    if show_upgrade_popup:    draw_popup("UPGRADE WINDOW")
-    if show_event_log_popup:  draw_popup("EVENT LOG")
-    if show_settings_popup:   draw_popup("SETTINGS")
+    if popups["bank"]:       draw_popup("BANK WINDOW")
+    elif popups["upgrade"]:    draw_popup("UPGRADE WINDOW")
+    elif popups["event_log"]:  draw_popup("EVENT LOG")
+    elif popups["settings"]:   draw_popup("SETTINGS")
 
     pygame.display.flip()
     dt = clock.tick(60) / 1000
