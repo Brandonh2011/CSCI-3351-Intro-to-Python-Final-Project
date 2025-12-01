@@ -17,6 +17,8 @@ screen = pygame.display.set_mode((x_screen, y_screen))
 # Background
 bg_image = pygame.image.load('Assets/Background/MainBackgroundSmartCents.png')
 bg_image = pygame.transform.scale(bg_image, (x_screen, y_screen))
+billy_image = pygame.image.load('Assets/Background/billy.png')
+billy_image = pygame.transform.scale(billy_image, (200, 200))
 
 pygame.font.init()
 my_font = pygame.font.SysFont('Comic Sans MS', 30)
@@ -91,6 +93,7 @@ while running:
             running = False
 
     screen.blit(bg_image, (0, 0))
+    screen.blit(billy_image, (500,300))
     screen.blit(title_text, title_contain)
     screen.blit(turn_text, turn_container)
     screen.blit(money_text, money_container)
