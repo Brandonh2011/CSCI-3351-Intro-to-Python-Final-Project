@@ -47,7 +47,7 @@ dt = 0
 x = 0
 
 # Load icon
-bank_icon = pygame.image.load("Assets/Footer/bank.png")
+bank_icon = pygame.image.load("Assets/Footer/Bank.png")
 bank_icon = pygame.transform.scale(bank_icon, (120, 120))
 upgrade_icon = pygame.image.load("Assets/Footer/Upgrade Hovered.png")
 upgrade_icon = pygame.transform.scale(upgrade_icon, (120, 120))
