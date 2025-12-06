@@ -17,7 +17,7 @@ screen = pygame.display.set_mode((x_screen, y_screen))
 # Background
 bg_image = pygame.image.load('Assets/Background/MainBackgroundSmartCents.png')
 bg_image = pygame.transform.scale(bg_image, (x_screen, y_screen))
-billy_image = pygame.image.load('Assets/Background/billy.png')
+billy_image = pygame.image.load('Assets/Background/Billy.png')
 billy_image = pygame.transform.scale(billy_image, (200, 200))
 
 pygame.font.init()
