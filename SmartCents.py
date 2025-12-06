@@ -75,17 +75,17 @@ B3 = Button(button_width*2, button_y, button_width, button_height, "", Gray, GRE
 B4 = Button(button_width*3, button_y, button_width, button_height, "", Gray, GREEN, my_font, open_Setting)
 
 #Upgrade buttons
-UpBut1 = Button(500, 210, 80, 80, "up1", Gray, GREEN, my_font, open_Upgrade)
-UpBut2 = Button(600, 210, 80, 80, "up2", Gray, GREEN, my_font, open_Upgrade)
-UpBut3 = Button(700, 210, 80, 80, "up3", Gray, GREEN, my_font, open_Upgrade)
+UpBut1 = Button(500, 210, 80, 80, "T1.1", Gray, GREEN, my_font, open_Upgrade)
+UpBut2 = Button(600, 210, 80, 80, "T1.2", Gray, GREEN, my_font, open_Upgrade)
+UpBut3 = Button(700, 210, 80, 80, "T1.3", Gray, GREEN, my_font, open_Upgrade)
 
-UpBut4 = Button(400, 350, 80, 80, "up4", Gray, GREEN, my_font, open_Upgrade)
-UpBut5 = Button(500, 350, 80, 80, "up1", Gray, GREEN, my_font, open_Upgrade)
-UpBut6 = Button(600, 350, 80, 80, "up2", Gray, GREEN, my_font, open_Upgrade)
-UpBut7 = Button(700, 350, 80, 80, "up3", Gray, GREEN, my_font, open_Upgrade)
-UpBut8 = Button(800, 350, 80, 80, "up4", Gray, GREEN, my_font, open_Upgrade)
+UpBut4 = Button(400, 350, 80, 80, "T2.1", Gray, GREEN, my_font, open_Upgrade)
+UpBut5 = Button(500, 350, 80, 80, "T2.2", Gray, GREEN, my_font, open_Upgrade)
+UpBut6 = Button(600, 350, 80, 80, "T2.3", Gray, GREEN, my_font, open_Upgrade)
+UpBut7 = Button(700, 350, 80, 80, "T2.4", Gray, GREEN, my_font, open_Upgrade)
+UpBut8 = Button(800, 350, 80, 80, "T2.5", Gray, GREEN, my_font, open_Upgrade)
 
-UpBut9 = Button(600, 480, 80, 80, "up4", Gray, GREEN, my_font, open_Upgrade)
+UpBut9 = Button(600, 480, 80, 80, "T3", Gray, GREEN, my_font, open_Upgrade)
 
 
 # Main Loop
