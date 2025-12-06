@@ -17,7 +17,7 @@ screen = pygame.display.set_mode((x_screen, y_screen))
 # Background
 bg_image = pygame.image.load('Assets/Background/MainBackgroundSmartCents.png')
 bg_image = pygame.transform.scale(bg_image, (x_screen, y_screen))
-billy_image = pygame.image.load('Assets/Background/billy.png')
+billy_image = pygame.image.load('Assets/Background/Billy.png')
 billy_image = pygame.transform.scale(billy_image, (200, 200))
 
 pygame.font.init()
@@ -74,6 +74,20 @@ B2 = Button(button_width, button_y, button_width, button_height, "", Gray, GREEN
 B3 = Button(button_width*2, button_y, button_width, button_height, "", Gray, GREEN, my_font, open_Event_Log)
 B4 = Button(button_width*3, button_y, button_width, button_height, "", Gray, GREEN, my_font, open_Setting)
 
+#Upgrade buttons
+UpBut1 = Button(500, 210, 80, 80, "T1.1", Gray, GREEN, my_font, open_Upgrade)
+UpBut2 = Button(600, 210, 80, 80, "T1.2", Gray, GREEN, my_font, open_Upgrade)
+UpBut3 = Button(700, 210, 80, 80, "T1.3", Gray, GREEN, my_font, open_Upgrade)
+
+UpBut4 = Button(400, 350, 80, 80, "T2.1", Gray, GREEN, my_font, open_Upgrade)
+UpBut5 = Button(500, 350, 80, 80, "T2.2", Gray, GREEN, my_font, open_Upgrade)
+UpBut6 = Button(600, 350, 80, 80, "T2.3", Gray, GREEN, my_font, open_Upgrade)
+UpBut7 = Button(700, 350, 80, 80, "T2.4", Gray, GREEN, my_font, open_Upgrade)
+UpBut8 = Button(800, 350, 80, 80, "T2.5", Gray, GREEN, my_font, open_Upgrade)
+
+UpBut9 = Button(600, 480, 80, 80, "T3", Gray, GREEN, my_font, open_Upgrade)
+
+
 # Main Loop
 while running:
     for event in pygame.event.get():
@@ -112,9 +126,28 @@ while running:
         pygame.draw.rect(screen, (0,0,0), popup_rect, 4)
         txt = my_font.render(title, True, (0,0,0))
         screen.blit(txt, txt.get_rect(center=popup_rect.center))
+    def draw_upgrades():
+        tier_one = my_font.render('Tier 1!', False, (0, 0, 0))
+        tier_one_container = title_text.get_rect(center=(600, 160))
+        screen.blit(tier_one, tier_one_container.center)
+        tier_two = my_font.render('Tier 2!', False, (0, 0, 0))
+        tier_two_container = title_text.get_rect(center=(600, 300))
+        screen.blit(tier_two, tier_two_container.center)
+        tier_three = my_font.render('Tier 3!', False, (0, 0, 0))
+        tier_three_container = title_text.get_rect(center=(600, 435))
+        screen.blit(tier_three, tier_three_container.center)
+        UpBut1.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut1, 3)
+        UpBut2.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut2, 3)
+        UpBut3.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut3, 3)
+        UpBut4.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut4, 3)
+        UpBut5.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut5, 3)
+        UpBut6.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut6, 3)
+        UpBut7.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut7, 3)
+        UpBut8.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut8, 3)
+        UpBut9.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut9, 3)
 
-    if popups["bank"]:       draw_popup("BANK WINDOW")
-    elif popups["upgrade"]:    draw_popup("UPGRADE WINDOW")
+    if popups["bank"]:       draw_popup("BANK WINDOW") 
+    elif popups["upgrade"]:    draw_popup(""); draw_upgrades()
     elif popups["event_log"]:  draw_popup("EVENT LOG")
     elif popups["settings"]:   draw_popup("SETTINGS")
 
