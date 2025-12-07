@@ -120,12 +120,10 @@ while running:
     B4.draw(screen); screen.blit(settings_icon, settings_icon.get_rect(center=B4.rect.center))
 
     # --- POPUPS ---
-    def draw_popup(title):
+    def draw_popup():
         popup_rect = pygame.Rect(300, 150, 680, 420)
         pygame.draw.rect(screen, (160,160,160), popup_rect)
         pygame.draw.rect(screen, (0,0,0), popup_rect, 4)
-        txt = my_font.render(title, True, (0,0,0))
-        screen.blit(txt, txt.get_rect(center=popup_rect.center))
     def draw_upgrades():
         tier_one = my_font.render('Tier 1!', False, (0, 0, 0))
         tier_one_container = title_text.get_rect(center=(600, 160))
@@ -146,10 +144,10 @@ while running:
         UpBut8.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut8, 3)
         UpBut9.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut9, 3)
 
-    if popups["bank"]:       draw_popup("BANK WINDOW") 
-    elif popups["upgrade"]:    draw_popup(""); draw_upgrades()
-    elif popups["event_log"]:  draw_popup("EVENT LOG")
-    elif popups["settings"]:   draw_popup("SETTINGS")
+    if popups["bank"]:       draw_popup()
+    elif popups["upgrade"]:    draw_popup(); draw_upgrades()
+    elif popups["event_log"]:  draw_popup()
+    elif popups["settings"]:   draw_popup()
 
     pygame.display.flip()
     dt = clock.tick(60) / 1000
