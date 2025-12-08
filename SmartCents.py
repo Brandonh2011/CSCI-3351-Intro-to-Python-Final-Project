@@ -136,7 +136,8 @@ def draw_tier_label(text, buttons_group):
     screen.blit(tier_text, tier_rect)
 
 UpBut9 = Button(600, 480, 80, 80, "T3", GRAY, GREEN, my_font, open_Upgrade)
-
+def something():
+    print("something")
 # Bank Buttons
 Deposit_Button = Button(500,210, 275, 50, "Deposit", GRAY, GREEN, my_font, None)
 Withdrawl_Button = Button(700, 210, 275, 50, "Withdrawl", GRAY, GREEN, my_font, None)
@@ -153,8 +154,9 @@ while running:
         B2.handle_event(event)
         B3.handle_event(event)
         B4.handle_event(event)
-        for btn in [UpBut1, UpBut2, UpBut3, UpBut4, UpBut5, UpBut6, UpBut7, UpBut8, UpBut9]:
-            btn.handle_event(event)
+        if popups["upgrade"]:  # Only handle upgrade button clicks when Upgrade menu is open
+            for btn in [UpBut1, UpBut2, UpBut3, UpBut4, UpBut5, UpBut6, UpBut7, UpBut8, UpBut9]:
+                btn.handle_event(event)
 
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             for key in popups:
