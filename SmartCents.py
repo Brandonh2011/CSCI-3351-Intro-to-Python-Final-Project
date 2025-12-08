@@ -138,8 +138,8 @@ def draw_tier_label(text, buttons_group):
 UpBut9 = Button(600, 480, 80, 80, "T3", GRAY, GREEN, my_font, open_Upgrade)
 
 # Bank Buttons
-Deposit_Button = Button(500,210, 100,50, "Deposit", GRAY, GREEN, my_font, None)
-Withdrawl_Button = Button(700, 210, 100, 50, "Withdrawl", GRAY, GREEN, my_font, None)
+Deposit_Button = Button(500,210, 275, 50, "Deposit", GRAY, GREEN, my_font, None)
+Withdrawl_Button = Button(700, 210, 275, 50, "Withdrawl", GRAY, GREEN, my_font, None)
 Input_Box = pygame.rect.Rect(550, 310, 200, 50)
 
 text = ""
@@ -190,8 +190,24 @@ while running:
         popup_rect = scale_rect(300,150,680,420)
         pygame.draw.rect(screen, (160,160,160), popup_rect)
         pygame.draw.rect(screen, (0,0,0), popup_rect, 4)
+        return popup_rect
 
     def draw_bank():
+
+        popup_rect = draw_popup()  # get popup rect
+
+        # Horizontal center
+        center_x = popup_rect.centerx
+        start_y = popup_rect.top + scale(60,'y')  # some padding from top
+
+        # Buttons: place side by side
+        spacing = scale(150,'x')
+        Deposit_Button.rect.center = (center_x - spacing//2, start_y)
+        Withdrawl_Button.rect.center = (center_x + spacing//2, start_y)
+
+        # Input box: below buttons
+        Input_Box.center = (center_x, start_y + scale(80,'y'))
+
         Deposit_Button.draw(screen)
         Withdrawl_Button.draw(screen)
         pygame.draw.rect(screen, (255,255,255), Input_Box, 50)
@@ -214,7 +230,7 @@ while running:
             pygame.draw.rect(screen, (0,0,0), btn.rect, 3)
             screen.blit(icon, icon.get_rect(center=btn.rect.center))
 
-    if popups["bank"]: draw_popup()
+    if popups["bank"]: draw_popup(); draw_bank()
     elif popups["upgrade"]: draw_popup(); draw_upgrades()
     elif popups["event_log"]: draw_popup()
     elif popups["settings"]: draw_popup()
