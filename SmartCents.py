@@ -177,7 +177,7 @@ billy_image = pygame.transform.scale(billy_image, (scale(200,'x'), scale(200,'y'
 bank_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Bank.png"), (scale(120,'x'), scale(120,'y')))
 upgrade_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Upgrade Hovered.png"), (scale(120,'x'), scale(120,'y')))
 event_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Event Log.png"), (scale(120,'x'), scale(120,'y')))
-settings_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Settings gear.png"), (scale(120,'x'), scale(120,'y')))
+settings_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Quit Button.png"), (scale(120,'x'), scale(120,'y')))
 
 # Upgrade icons
 plot_icon     = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Plot.png"), (scale(90,'x'), scale(90,'y')))
