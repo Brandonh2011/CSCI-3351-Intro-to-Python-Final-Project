@@ -135,7 +135,6 @@ def draw_tier_label(text, buttons_group):
     tier_rect = tier_text.get_rect(center=(center_x, label_y))
     screen.blit(tier_text, tier_rect)
 
-UpBut9 = Button(600, 480, 80, 80, "T3", GRAY, GREEN, my_font, open_Upgrade)
 def something():
     print("something")
 # Bank Buttons
