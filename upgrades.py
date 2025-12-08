@@ -84,39 +84,56 @@ class Upgrade:
     def canPurchase(self, upgrade_key, player):
         #Checks if player can afford upgrade and if not maxed out
         upgrade = self.upgrades[upgrade_key]
-        return player.canAfford(upgrade["cost"]) and upgrade["current_level"] < upgrade["max_level"]
+
+        # Calculate actual cost 
+        if upgrade_key == "fertilizerConsumable":
+            cost = upgrade["cost"]  
+        else:
+            cost = upgrade["cost"] * (upgrade["current_level"] + 1)
+
+        # Special handling for fertilizer
+        if upgrade_key == "fertilizerConsumable":
+            return player.canAfford(cost)
+
+        # Regular upgrades with levels
+        return player.canAfford(cost) and upgrade["current_level"] < upgrade["max_level"]
     
     def purchaseUpgrade(self, upgrade_key, player):
         #Buys an upgrade if possible
         if upgrade_key not in self.upgrades:
             return "Invalid upgrade selection."
-        
+
         upgrade = self.upgrades[upgrade_key]
+
         
-         #Calculates cost based on current level
-        cost = upgrade["cost"] * (upgrade["current_level"] + 1)
-        
+        if upgrade_key == "fertilizerConsumable":
+            cost = upgrade["cost"]  
+        else:
+            #Calculate cost based on current level
+            cost = upgrade["cost"] * (upgrade["current_level"] + 1)
+
         #Checks if purchase is valid or not
         if not self.canPurchase(upgrade_key, player):
-            if upgrade["current_level"] >= upgrade["max_level"]:
+            if upgrade_key != "fertilizerConsumable" and upgrade["current_level"] >= upgrade["max_level"]:
                 return False, f"{upgrade['name']} already maxed out"
             else:
                 return False, f"Can't afford {upgrade['name']}"
-            
+
         #if a worker is bought
         if upgrade_key == "Employee":
             player.minusMoney(cost)
             self.__num_workers += 1
             player.addHappiness(2)
             upgrade["current_level"] += 1
-            return True, f"Hired worker #{self.__num_worker}"
-           
+            return True, f"Hired worker #{self.__num_workers}"
+
         elif upgrade_key == "fertilizerConsumable":
             player.minusMoney(cost)
             #To ensure its active for next turn
             self.__fertilizer_queue = True
             player.addHappiness(1)
-            
+            return True, f"Purchased {upgrade['name']}"
+
         else:
             player.minusMoney(cost)
             upgrade["current_level"] += 1
@@ -151,9 +168,9 @@ class Upgrade:
         #Worker multiplier
         worker_mult = 1.0 + (self.__num_workers * 0.3)
         
-        fertilizer_boost = 0
+        fertilizer_boost = 1.0
         #Fertilizer boost if active
-        if self.__fertliizer_active:
+        if self.__fertilizer_active:
             fertilizer_boost = 1.5
             
         
