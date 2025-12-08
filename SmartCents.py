@@ -137,7 +137,7 @@ def draw_tier_label(text, buttons_group):
 
 # Bank Buttons
 Deposit_Button = Button(scale(400, 'x'),scale(210, 'y'), scale(150, 'x'), scale(75 , 'y'), "Deposit", GRAY, GREEN, my_font, None)
-Withdrawl_Button = Button(scale(800, 'x'), scale(210, 'y'), scale(150, 'x'), scale(75, 'y'), "Withdrawl", GRAY, GREEN, my_font, None)
+Withdrawl_Button = Button(scale(800, 'x'), scale(210, 'y'), scale(150, 'x'), scale(75, 'y'), "Withdrawal", GRAY, GREEN, my_font, None)
 Input_Box = pygame.rect.Rect(550, 310, 200, 50)
 
 text = ""
