@@ -135,11 +135,9 @@ def draw_tier_label(text, buttons_group):
     tier_rect = tier_text.get_rect(center=(center_x, label_y))
     screen.blit(tier_text, tier_rect)
 
-def something():
-    print("something")
 # Bank Buttons
-Deposit_Button = Button(500,210, 275, 50, "Deposit", GRAY, GREEN, my_font, None)
-Withdrawl_Button = Button(700, 210, 275, 50, "Withdrawl", GRAY, GREEN, my_font, None)
+Deposit_Button = Button(scale(400, 'x'),scale(210, 'y'), scale(150, 'x'), scale(50 , 'y'), "Deposit", GRAY, GREEN, my_font, None)
+Withdrawl_Button = Button(scale(800, 'x'), scale(210, 'y'), scale(150, 'x'), scale(50, 'y'), "Withdrawl", GRAY, GREEN, my_font, None)
 Input_Box = pygame.rect.Rect(550, 310, 200, 50)
 
 text = ""
