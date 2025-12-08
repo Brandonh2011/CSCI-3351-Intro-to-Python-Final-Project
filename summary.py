@@ -40,6 +40,9 @@ def generate_summary(player: Player):
         ending = "CONGRATULATIONS — YOU COMPLETED SMARTCENTS!"
 
     # Create the formatted report text
+    
+    #--- WELL-BEING SUMMARY --- put back on line 58/59 if we want it for future
+#Happiness Level:       {happiness}
     summary_text = f"""
 ===========================
    SMARTCENTS FINAL REPORT
@@ -53,8 +56,7 @@ Checking Balance:     ${money:.0f}
 Savings Balance:      ${savings:.0f}
 Total Net Worth:      ${networth:.0f}
 
---- WELL-BEING SUMMARY ---
-Happiness Level:       {happiness}
+
 
 --- FINAL RESULT ---
 {ending}

@@ -360,12 +360,12 @@ def update_display_text():
     year = game.player.getYear()
     money = game.player.getMoney()
     savings = game.player.bank.getSavings()
-    happiness = game.player.getHappiness()
+    #happiness = game.player.getHappiness()
     base_income = game.upgrades.calculateIncome()
 
     turn_text = my_font.render(f'Year: {year}', False, (0,0,0))
     money_text = my_font.render(f'Checking: ${money:.0f} | Savings: ${savings:.0f}', False, (0,0,0))
-    footer_text = my_font.render(f'Income: ${base_income:.0f}/turn | Happiness: {happiness} | {current_event_message}', False, (0,0,0))
+    #footer_text = my_font.render(f'Income: ${base_income:.0f}/turn | Happiness: {happiness} | {current_event_message}', False, (0,0,0))
 
 # Next Turn Button 
 next_turn_button = Button(scale(BASE_W - 250,'x'), scale(BASE_H/10,'y'), scale(200,'x'), scale(50,'y'), "Next Turn", GRAY, GREEN, my_font, next_turn)
@@ -538,7 +538,7 @@ while running:
             screen.blit(event_name_text, event_name_rect)
 
             # Event result - color based on positive/negative
-            loss_keywords = ["cost you", "took a hit", "lost", "paid an extra", "missed out", "medical bill", "investment loss", "tax increase"]
+            loss_keywords = ["cost you", "cost", "took a hit", "lost", "paid an extra", "missed out", "medical bill", "investment loss", "tax increase", "emergency repairs", "strikes and settlements"]
             is_negative = any(keyword in event_result.lower() for keyword in loss_keywords)
             result_color = (255, 0, 0) if is_negative else (0, 100, 0)
 
@@ -628,7 +628,7 @@ while running:
 
         # Determine if event is negative (loses money) by checking result text for loss indicators
         result_text_content = current_event_data['result']
-        loss_keywords = ["cost you", "took a hit", "lost", "paid an extra", "missed out", "medical bill", "investment loss", "tax increase"]
+        loss_keywords = ["cost you", "cost", "took a hit", "lost", "paid an extra", "missed out", "medical bill", "investment loss", "tax increase", "emergency repairs", "strikes and settlements"]
         is_negative = any(keyword in result_text_content.lower() for keyword in loss_keywords)
         result_color = (255, 0, 0) if is_negative else (0, 100, 0)  # Red for negative, green for positive
 
