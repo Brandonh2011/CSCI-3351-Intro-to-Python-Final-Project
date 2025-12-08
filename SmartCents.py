@@ -64,6 +64,16 @@ upgrade_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Upgrade H
 event_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Event Log.png"), (120, 120))
 settings_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Settings gear.png"), (120, 120))
 
+# Upgrade Icons
+plot_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Plot.png"), (120, 120))
+tools_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Tools.png"), (120, 120))
+employee_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Employee.png"), (120, 120))
+potato_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Potato.png"), (120, 120))
+machine_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Tractor.png"), (120, 120))
+stall_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Stall.png"), (120, 120))
+fert_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Fertilizer.png"), (120, 120))
+chicken_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Massive Cock.png"), (120, 120))
+
 # Buttons
 button_width = x_screen / 4
 button_height = y_screen / 6
