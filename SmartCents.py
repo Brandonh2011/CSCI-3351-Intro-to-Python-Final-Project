@@ -70,9 +70,9 @@ tools_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Too
 employee_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Employee.png"), (120, 120))
 potato_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Potato.png"), (120, 120))
 machine_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Tractor.png"), (120, 120))
-stall_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Stall.png"), (120, 120))
-fert_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Fertilizer.png"), (120, 120))
-chicken_icon = pygame.transform.scale(pygame.image.load("Assets/Footer/Massive Cock.png"), (120, 120))
+stall_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Stall.png"), (120, 120))
+fert_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Fertilizer.png"), (120, 120))
+chicken_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Massive Cock.png"), (120, 120))
 
 # Buttons
 button_width = x_screen / 4
@@ -97,6 +97,13 @@ UpBut8 = Button(800, 350, 80, 80, "T2.5", Gray, GREEN, my_font, open_Upgrade)
 
 UpBut9 = Button(600, 480, 80, 80, "T3", Gray, GREEN, my_font, open_Upgrade)
 
+# Bank Buttons
+Deposit_Button = Button(500,210, 100,50, "Deposit", Gray, GREEN, my_font, None)
+Withdrawl_Button = Button(700, 210, 100, 50, "Withdrawl", Gray, GREEN, my_font, None)
+Input_Box = pygame.rect.Rect(550, 310, 200, 50)
+
+text = ""
+saved = ""
 
 # Main Loop
 while running:
@@ -112,6 +119,15 @@ while running:
         if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
             for key in popups:
                 popups[key] = False
+        
+        if popups["bank"] and event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_RETURN:
+                saved = text
+                text = ""
+            elif event.key == pygame.K_BACKSPACE:
+                text = text[:-1]
+            else:
+                text += event.unicode
 
         if event.type == pygame.QUIT:
             running = False
@@ -154,7 +170,13 @@ while running:
         UpBut8.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut8, 3)
         UpBut9.draw(screen); pygame.draw.rect(screen, (0, 0, 0), UpBut9, 3)
 
-    if popups["bank"]:       draw_popup()
+    def draw_bank():
+        Deposit_Button.draw(screen)
+        Withdrawl_Button.draw(screen)
+        pygame.draw.rect(screen, (255,255,255), Input_Box, 50)
+        screen.blit(my_font.render(text, True, (0,0,0)), (Input_Box.x+10, Input_Box.y+10))
+
+    if popups["bank"]:       draw_popup(); draw_bank()
     elif popups["upgrade"]:    draw_popup(); draw_upgrades()
     elif popups["event_log"]:  draw_popup()
     elif popups["settings"]:   draw_popup()
