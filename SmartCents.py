@@ -336,12 +336,20 @@ def next_turn():
 
         # Trigger random event
         event_result = trigger_event(game.player, game.upgrades)
-        current_event_message = f"{event_result['event_name']}: {event_result['result']}"
-        current_event_data = event_result
-        event_popup_active = True  # Show event popup
 
-        # Add event to the event log
-        event_log.append((event_result['event_name'], event_result['result']))
+        if event_result is not None:
+            # Event occurred - show popup and add to log
+            current_event_message = f"{event_result['event_name']}: {event_result['result']}"
+            current_event_data = event_result
+            event_popup_active = True  # Show event popup
+
+            # Add event to the event log
+            event_log.append((event_result['event_name'], event_result['result']))
+        else:
+            # No event occurred - just update display
+            current_event_message = "No event this turn."
+            current_event_data = None
+            event_popup_active = False
 
         # Update display text
         update_display_text()

@@ -1,7 +1,7 @@
 class Bank:
     def __init__(self):
         self.__savings = 0
-        self.__interestRate = .05 #5% interest on savings
+        self.__interestRate = .10 #10% interest on savings
         
     def deposit(self, amount, player):
         if amount <= 0:

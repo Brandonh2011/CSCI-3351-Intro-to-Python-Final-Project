@@ -56,42 +56,50 @@ def emergency_fund_bonus_effect(player):
         player.addHappiness(3)
         return f"Your emergency fund paid off! You earned ${bonus} in interest."
     else:
-        cost = random.randint(300, 600)
+        cost = random.randint(300, 1200)
         player.minusMoney(cost)
         player.minusHappiness(8)
-        return f"You had an emergency but no savings! Cost you ${cost}."
+        return f"You had an emergency but not enough savings! Cost you ${cost}."
 
-def upgrade_synergy_bonus_effect(player, game_upgrades):
-    # Bonus if player has multiple complementary upgrades
+def upgrade_maintenance_crisis_effect(player, game_upgrades):
+    # Maintanence issues if player has multiple complementary upgrades 
     tool_level = game_upgrades.upgrades["hand_tools"]["current_level"]
     machine_level = game_upgrades.upgrades["Machinery"]["current_level"]
     land_level = game_upgrades.upgrades["land_increase_1"]["current_level"] + game_upgrades.upgrades["land_increase_2"]["current_level"]
 
-    synergy_score = tool_level + machine_level + land_level
+    upgrade_count = tool_level + machine_level + land_level
 
-    if synergy_score >= 4:
-        bonus = synergy_score * 200
-        player.addMoney(bonus)
-        player.addHappiness(5)
-        return f"Your well-coordinated farm upgrades created synergy! Bonus: ${bonus}."
+    if upgrade_count >= 3:
+        maintenance_cost = upgrade_count * 400
+        player.minusMoney(maintenance_cost)
+        player.minusHappiness(12)
+        return f"Multiple upgrades caused maintenance nightmare! Emergency repairs cost ${maintenance_cost}."
     else:
-        return "Your farm could benefit from better upgrade coordination."
+        cost = random.randint(300, 600)
+        player.minusMoney(cost)
+        player.minusHappiness(6)
+        return f"Equipment maintenance issues cost you ${cost}."
 
-def savings_milestone_effect(player):
+def savings_devaluation_crisis_effect(player):
     savings = player.bank.getSavings()
     if savings >= 5000:
-        interest_bonus = int(savings * 0.15)
-        player.addMoney(interest_bonus)
-        player.addHappiness(8)
-        return f"Savings milestone reached! High-yield interest bonus: ${interest_bonus}."
-    elif savings >= 1000:
-        interest_bonus = int(savings * 0.05)
-        player.addMoney(interest_bonus)
-        player.addHappiness(3)
-        return f"Good savings habit! Interest bonus: ${interest_bonus}."
+        devaluation_loss = int(savings * 0.20)  # 20% devaluation
+        player.minusMoney(devaluation_loss)
+        player.minusHappiness(15)
+        return f"Economic crisis! Your savings lost ${devaluation_loss} in value due to inflation."
+    elif savings >= 2000:
+        devaluation_loss = int(savings * 0.15)  # 15% devaluation
+        player.minusMoney(devaluation_loss)
+        player.minusHappiness(10)
+        return f"Inflation hit hard! Lost ${devaluation_loss} from your savings."
+    elif savings >= 500:
+        devaluation_loss = int(savings * 0.10)  # 10% devaluation
+        player.minusMoney(devaluation_loss)
+        player.minusHappiness(8)
+        return f"Market volatility affected your savings. Lost ${devaluation_loss}."
     else:
         player.minusHappiness(5)
-        return "Consider building up your savings for future security."
+        return "Your lack of savings left you vulnerable to economic uncertainty."
 
 def equipment_warning_effect(player, game_upgrades):
     year = player.getYear()
@@ -105,15 +113,18 @@ def equipment_warning_effect(player, game_upgrades):
         player.addHappiness(2)
         return "Your equipment is in good condition."
 
-def workforce_efficiency_effect(player, game_upgrades):
+def labor_dispute_crisis_effect(player, game_upgrades):
     employee_count = game_upgrades.upgrades["Employee"]["current_level"]
     if employee_count > 0:
-        efficiency_bonus = employee_count * 150
-        player.addMoney(efficiency_bonus)
-        return f"Your trained workforce boosted productivity! Extra income: ${efficiency_bonus}."
+        dispute_cost = employee_count * 700  
+        player.minusMoney(dispute_cost)
+        player.minusHappiness(12)
+        return f"Labor dispute! Strikes and settlements cost you ${dispute_cost}."
     else:
-        player.minusHappiness(3)
-        return "Consider hiring employees to help with farm operations."
+        cost = random.randint(400, 800)
+        player.minusMoney(cost)
+        player.minusHappiness(8)
+        return f"Contract labor issues cost you ${cost} in delays and replacements."
 
 def market_demand_shift_effect(player, game_upgrades):
     # Bonus if player has market stall upgrade
@@ -191,15 +202,15 @@ EVENT_POOL = {
         emergency_fund_bonus_effect
     ),
     "upgrade_synergy": Event(
-        "Farm Synergy Review",
-        "Your farm upgrades work together to create unexpected benefits.",
-        upgrade_synergy_bonus_effect,
+        "Equipment Maintenance Crisis",
+        "Multiple upgrades create unexpected maintenance burdens.",
+        upgrade_maintenance_crisis_effect,
         requires_upgrades=True
     ),
     "savings_milestone": Event(
-        "Savings Milestone",
-        "Your savings account reaches an important milestone.",
-        savings_milestone_effect
+        "Economic Crisis",
+        "Market volatility and inflation affect your savings.",
+        savings_devaluation_crisis_effect
     ),
     "equipment_warning": Event(
         "Equipment Assessment",
@@ -208,9 +219,9 @@ EVENT_POOL = {
         requires_upgrades=True
     ),
     "workforce_efficiency": Event(
-        "Workforce Review",
-        "Your employees' performance is evaluated.",
-        workforce_efficiency_effect,
+        "Labor Relations Crisis",
+        "Workforce issues disrupt farm operations.",
+        labor_dispute_crisis_effect,
         requires_upgrades=True
     ),
     "market_demand": Event(
@@ -231,27 +242,31 @@ EVENT_POOL = {
 #Event Chances of happening
 #Higher percentages mean higher chance of that event happening
 EVENT_PERCENTAGES = {
-    "medical_bill": 0.08,
-    "investment_loss": 0.07,
+    "medical_bill": 0.10,
+    "investment_loss": 0.08,
     "tax_increase": 0.09,
-    "stock_boom": 0.15,
-    "business_bonus": 0.18,
+    "stock_boom": 0.04,
+    "business_bonus": 0.045,
     # Strategic events
-    "emergency_fund": 0.12,
-    "upgrade_synergy": 0.08,
-    "savings_milestone": 0.06,
+    "emergency_fund": 0.09,
+    "upgrade_synergy": 0.07,
+    "savings_milestone": 0.065,
     "equipment_warning": 0.06,
-    "workforce_efficiency": 0.04,
-    "market_demand": 0.05,
-    "diversification": 0.02
+    "workforce_efficiency": 0.05,
+    "market_demand": 0.035,
+    "diversification": 0.015
 }
 
 
-def get_random_event():
-    
+def get_random_event(): 
+
    # Randomly select one event from EVENT_POOL based on EVENT_PERCENTAGES.
-    # Returns the selected Event object.
-    
+    # Returns the selected Event object, or None for no event (70% chance).
+
+    # 50% chance of no event occurring
+    if random.random() < 0.50:
+        return None
+
     names = list(EVENT_PERCENTAGES.keys())       # Event identifiers
     percentages = list(EVENT_PERCENTAGES.values())   # Corresponding probabilities
     selected = random.choices(names, weights=percentages, k=1)[0]  # Pick one key
@@ -261,9 +276,12 @@ def get_random_event():
 def trigger_event(player, game_upgrades=None):
 
     # Selects and applies a random event to the player.
-    # Returns a dictionary summarizing the event and its result text.
+    # Returns a dictionary summarizing the event and its result text, or None if no event occurs.
 
     event = get_random_event()               # Pick a random event
+    if event is None:
+        return None  # No event occurred
+
     result_text = event.apply(player, game_upgrades)        # Apply the event’s effect
     return {
         "event_name": event.name,
