@@ -49,9 +49,9 @@ Player: {name}
 Years Survived: {year}
 
 --- FINANCIAL SUMMARY ---
-Checking Balance:     ${money:.2f}
-Savings Balance:      ${savings:.2f}
-Total Net Worth:      ${networth:.2f}
+Checking Balance:     ${money:.0f}
+Savings Balance:      ${savings:.0f}
+Total Net Worth:      ${networth:.0f}
 
 --- WELL-BEING SUMMARY ---
 Happiness Level:       {happiness}
