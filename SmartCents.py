@@ -552,10 +552,12 @@ while running:
 
         # Horizontal center
         center_x = popup_rect.centerx
-        start_y = popup_rect.top + scale(60,'y')  # some padding from top
+        start_y = popup_rect.top + scale(180,'y')  # some padding from top
+
+ 
 
         # Buttons: place side by side
-        spacing = scale(150,'x')
+        spacing = scale(250,'x')
         Deposit_Button.rect.center = (center_x - spacing//2, start_y)
         Withdrawl_Button.rect.center = (center_x + spacing//2, start_y)
 
