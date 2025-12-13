@@ -280,15 +280,20 @@ fert_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Fert
 chicken_icon = pygame.transform.scale(pygame.image.load("Assets/Upgrade Assets/Massive Cock.png"), (120, 120))
 
 # Upgrade buttons - repositioned for better spacing in expanded popup
-UpBut1 = Button(scale(500,'x'), scale(220,'y'), scale(80,'x'), scale(80,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_1)
-UpBut2 = Button(scale(600,'x'), scale(220,'y'), scale(80,'x'), scale(80,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_2)
-UpBut3 = Button(scale(700,'x'), scale(220,'y'), scale(80,'x'), scale(80,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_3)
-UpBut4 = Button(scale(400,'x'), scale(400,'y'), scale(80,'x'), scale(80,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_4)
-UpBut5 = Button(scale(500,'x'), scale(400,'y'), scale(80,'x'), scale(80,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_5)
-UpBut6 = Button(scale(600,'x'), scale(400,'y'), scale(80,'x'), scale(80,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_6)
-UpBut7 = Button(scale(700,'x'), scale(400,'y'), scale(80,'x'), scale(80,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_7)
-UpBut8 = Button(scale(800,'x'), scale(400,'y'), scale(80,'x'), scale(80,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_8)
-UpBut9 = Button(scale(600,'x'), scale(580,'y'), scale(80,'x'), scale(80,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_9)
+t1 = 125
+t2 = 275
+t3 = 425
+upsize = 60
+
+UpBut1 = Button(scale(500,'x'), scale(t1,'y'), scale(upsize,'x'), scale(upsize,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_1)
+UpBut2 = Button(scale(600,'x'), scale(t1,'y'), scale(upsize,'x'), scale(upsize,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_2)
+UpBut3 = Button(scale(700,'x'), scale(t1,'y'), scale(upsize,'x'), scale(upsize,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_3)
+UpBut4 = Button(scale(400,'x'), scale(t2,'y'), scale(upsize,'x'), scale(upsize,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_4)
+UpBut5 = Button(scale(500,'x'), scale(t2,'y'), scale(upsize,'x'), scale(upsize,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_5)
+UpBut6 = Button(scale(600,'x'), scale(t2,'y'), scale(upsize,'x'), scale(upsize,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_6)
+UpBut7 = Button(scale(700,'x'), scale(t2,'y'), scale(upsize,'x'), scale(upsize,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_7)
+UpBut8 = Button(scale(800,'x'), scale(t2,'y'), scale(upsize,'x'), scale(upsize,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_8)
+UpBut9 = Button(scale(600,'x'), scale(t3,'y'), scale(upsize,'x'), scale(upsize,'y'), "", GRAY, GREEN, my_font, purchase_upgrade_9)
 
 # Being funky and grouping tiers and buttons
 tier1_buttons = [UpBut1, UpBut2, UpBut3]
@@ -306,7 +311,7 @@ def draw_tier_label(text, buttons_group):
 
     # Vertical position: above buttons but not too high to be visible
     top_y = min(btn.rect.top for btn in buttons_group)
-    label_y = top_y - scale(45,'y')  # 45 pixels above buttons for better visibility
+    label_y = top_y - scale(25, 'y')  # 45 pixels above buttons for better visibility
 
     # Use readable font for tier labels
     tier_font = pygame.font.SysFont('Comic Sans MS', scale(26,'y'))
@@ -493,7 +498,7 @@ while running:
 
 # ------------------ Popup on screen?? ------------------
     def draw_popup():
-        popup_rect = scale_rect(300,120,680,600)  # Increased height from 420 to 600 and moved up slightly
+        popup_rect = scale_rect(300,60,680,500)  # Increased height from 420 to 600 and moved up slightly
         pygame.draw.rect(screen, (160,160,160), popup_rect)
         pygame.draw.rect(screen, (0,0,0), popup_rect, 4)
 
@@ -658,7 +663,7 @@ while running:
         icons = [plot_icon, tools_icon, employee_icon, plot_icon, potato_icon, machine_icon, stall_icon, fert_icon, chicken_icon]
         buttons = [UpBut1, UpBut2, UpBut3, UpBut4, UpBut5, UpBut6, UpBut7, UpBut8, UpBut9]
 
-        small_font = pygame.font.SysFont('Comic Sans MS', scale(16,'y'))
+        small_font = pygame.font.SysFont('Comic Sans MS', scale(14,'y'))
 
         for i, (btn, icon, key) in enumerate(zip(buttons, icons, upgrade_keys)):
             btn.draw(screen)
